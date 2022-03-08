@@ -34,4 +34,12 @@ except:
 finally:
     # Get user's details from Twitter
     # user_details = api.me()
-    print(api.me())
+    print(api.user_timeline(count=1))
+
+# TODO: 1. Connect app to Kafka
+# TODO: 2. Dockerise app
+# TODO: 3. Refactor code (add test, modularise)
+# TODO: 4. Add app to kubernetes (pod, svc, skaffold)
+# TODO: 5. Transform the user_timeline data
+# TODO: 6. Connect Kafka to Pyspark streaming
+# TODO: 7. Connect Pyspark streaming to postgresql
