@@ -16,7 +16,7 @@ try:
     db_conn.autocommit = True
     print("DB connected")
 except ConnectionError:
-    print(ConnectionError)
+    print("Error during DB authentication")
 
 # connect to twitter auth
 twitter_auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET)
