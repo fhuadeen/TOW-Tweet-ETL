@@ -36,7 +36,8 @@ finally:
     # user_details = api.me()
     print(api.user_timeline(count=1))
 
-# TODO: 1. Connect app to Kafka
+# TODO: 1. Add API endpoint to app
+# TODO: 2. Connect app to Kafka
 # TODO: 2. Dockerise app
 # TODO: 3. Refactor code (add test, modularise)
 # TODO: 4. Add app to kubernetes (pod, svc, skaffold)
