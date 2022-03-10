@@ -1,4 +1,5 @@
-/src/utils/const.py
 __pycache__/
+*.pyc
+/src/utils/const.py
 /src/utils/__pycache__
 /etl_venv
