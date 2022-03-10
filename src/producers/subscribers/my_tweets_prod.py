@@ -1,21 +1,13 @@
-# from producers.base_producer import Producer
-
-# topic = "tweet_testing"
-
-# data = "How are you?"
-
-# my_tweets_producer = Producer(bootstrap_servers=KAFKA_SERVER)
-
-# my_tweets_producer.send(topic, data)
-# my_tweets_producer.flush()
-
-from kafka import KafkaProducer
+import sys,os
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, BASE)
+from base_producer import Producer
+from utils.const import KAFKA_SERVER
 
 
 topic = 'item'
-KAFKA_SERVER = "kafka.default.svc.cluster.local:9092"
 
-producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
+producer = Producer(bootstrap_servers=KAFKA_SERVER)
 
 producer.send(topic, b'One message!')
 producer.flush()
