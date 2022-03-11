@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collector-depl
+spec:
+  selector:
+    matchLabels:
+      app: tweet_collector
+  template:
+    metadata:
+      labels:
+        app: tweet_collector
+    spec:
+      containers:
+        - name: tweet_collector
+          image: fhuadeen/tweet_collector
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: 4500
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tweet_collector_srv
+spec:
+  selector:
+    app: tweet_collector
+  ports:
+    - name: tweet_collector
+      protocol: TCP
+      port: 4500
+      targetPort: 4500

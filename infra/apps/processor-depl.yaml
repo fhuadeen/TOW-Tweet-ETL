@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor-depl
+spec:
+  selector:
+    matchLabels:
+      app: tweet_processor
+  template:
+    metadata:
+      labels:
+        app: tweet_processor
+    spec:
+      containers:
+        - name: tweet_processor
+          image: fhuadeen/tweet_processor
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tweet_processor_srv
+spec:
+  selector:
+    app: tweet_processor
+  ports:
+    - name: tweet_processor
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
