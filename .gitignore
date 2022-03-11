@@ -1,5 +1,8 @@
 __pycache__/
 *.pyc
-/src/utils/const.py
-/src/utils/__pycache__
+/tweet_collector/src/utils/const.py
+/tweet_collector/src/utils/__pycache__
+/tweet_processor/src/utils/const.py
+/tweet_processor/src/utils/__pycache__
 /etl_venv
+TODO
