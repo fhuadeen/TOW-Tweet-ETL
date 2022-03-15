@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: collector-depl
+  name: listener-depl
 spec:
   selector:
     matchLabels:
-      app: tweet_collector
+      app: data-listener
   template:
     metadata:
       labels:
-        app: tweet_collector
+        app: data-listener
     spec:
       containers:
-        - name: tweet_collector
-          image: fhuadeen/tweet_collector
+        - name: data-listener
+          image: fhuadeen/tweet_data_listener
           resources:
             requests:
               cpu: 100m
@@ -22,18 +22,18 @@ spec:
               cpu: 100m
               memory: 128Mi
           ports:
-            - containerPort: 4500
+            - containerPort: 5000
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: tweet_collector_srv
+  name: data-listener-srv
 spec:
   selector:
-    app: tweet_collector
+    app: data-listener
   ports:
-    - name: tweet_collector
+    - name: data-listener
       protocol: TCP
-      port: 4500
-      targetPort: 4500
+      port: 5000
+      targetPort: 5000

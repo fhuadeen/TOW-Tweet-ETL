@@ -6,7 +6,6 @@ RUN mkdir /src
 # set working directory
 WORKDIR /src
 
-RUN pip install --upgrade pip
 COPY requirements.txt /src/requirements.txt
 RUN pip install -r requirements.txt
 

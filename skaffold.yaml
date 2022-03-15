@@ -1,0 +1,27 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/apps/*
+      # - ./infra/k8s-local/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: fhuadeen/tweet_data_listener
+      context: data_listener
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "***/*.py"
+            dest: .
+    - image: fhuadeen/tweet_data_producer
+      context: data_producer
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "***/*.py"
+            dest: .

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: processor-depl
+  name: producer-depl
 spec:
   selector:
     matchLabels:
-      app: tweet_processor
+      app: data-producer
   template:
     metadata:
       labels:
-        app: tweet_processor
+        app: data-producer
     spec:
       containers:
-        - name: tweet_processor
-          image: fhuadeen/tweet_processor
+        - name: data-producer
+          image: fhuadeen/tweet_data_producer
           resources:
             requests:
               cpu: 100m
@@ -22,18 +22,18 @@ spec:
               cpu: 100m
               memory: 128Mi
           ports:
-            - containerPort: 5000
+            - containerPort: 4500
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: tweet_processor_srv
+  name: data-producer-srv
 spec:
   selector:
-    app: tweet_processor
+    app: data-producer
   ports:
-    - name: tweet_processor
+    - name: data-producer
       protocol: TCP
-      port: 5000
-      targetPort: 5000
+      port: 4500
+      targetPort: 4500
