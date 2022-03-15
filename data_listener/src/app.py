@@ -30,7 +30,7 @@ consumer = Consumer(topic, bootstrap_servers=KAFKA_SERVER,
 for message in consumer:
     user_id = message['user_id']
     name = message['name']
-    username = message['username']
+    user = message['username']
     tweet = message['tweet']
     cursor.execute("INSERT INTO tweets (user_id, name, username, tweet) VALUES(%s, %s, %s, %s)",
                     (user_id, name, username, tweet))
