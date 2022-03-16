@@ -15,7 +15,7 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "***/*.py"
+          - src: "***/***/*.py"
             dest: .
     - image: fhuadeen/tweet_data_producer
       context: data_producer
@@ -23,5 +23,5 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "***/*.py"
+          - src: "***/***/*.py"
             dest: .

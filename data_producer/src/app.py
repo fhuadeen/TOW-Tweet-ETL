@@ -31,14 +31,13 @@ topic = 'items' #'user-tweet-topic'
 producer = Producer(bootstrap_servers=KAFKA_SERVER,
                     value_serializer=lambda x: dumps(x).encode('utf-8'))
 
-for e in range(1000):
+for e in range(1000,2000):
     data = {'user_id' : e,
             'name': 'fhuad',
             'username': 'fhuadeen',
             'tweet': 'I am happy!'}
     producer.send(topic, value=data)
     producer.flush()
-    sleep(5)
 
 # producer.send(topic, b'my Message!!!')
 # producer.flush()
