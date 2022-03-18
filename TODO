@@ -1,0 +1,31 @@
+"""
+Time scheduled data pipeline to collect a user's latest tweet, transform and save in database
+"""
+
+# DONE: Test app and kafka in kubernetes
+
+# TODO: Add event emitter to app to emit tweet to kafka through producer class, and emit collected data from kafka to db through listener class
+
+TODO: CREATE pythonoperator to produce tweet
+TODO: create kubernetespodoperator to run data_producer in kubernetes
+TODO: collect result from data_producer task and send to the data_listener task
+TODO: Create pythonoperator to collect tweet
+TODO: create kubernetespodoperator to runn data_listener in kubernetes
+
+# TODO: 1. Collect latest tweet - time scheduled DAG 1
+
+# TODO: 2. Send Tweet to Kafka
+
+# TODO: 3. Kafka send tweet to DAG 2 for processing
+
+# TODO: 4. Process and save tweet in postgres - Event (based on once Kafka sends in tweet) scheduled DAG 2
+
+# TODO: 1. Create Pipeline
+
+# TODO: 3. Refactor code (add test, modularise, const-.env)
+
+# TODO: 5. Transform the user_timeline data
+
+# TODO: 6. Connect Kafka to Pyspark streaming
+
+# TODO: 7. Connect Pyspark streaming to postgresql

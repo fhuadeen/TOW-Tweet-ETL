@@ -9,19 +9,11 @@ build:
   local:
     push: false
   artifacts:
-    - image: fhuadeen/tweet_data_listener
-      context: data_listener
+    - image: fhuadeen/producer-dag
+      context: cluster_workflow
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "***/***/*.py"
-            dest: .
-    - image: fhuadeen/tweet_data_producer
-      context: data_producer
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "***/***/*.py"
+          - src: "***/*.py"
             dest: .

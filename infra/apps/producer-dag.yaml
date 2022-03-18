@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer-depl
+  name: producer-dag
 spec:
   selector:
     matchLabels:
-      app: data-producer
+      app: producer-dag
   template:
     metadata:
       labels:
-        app: data-producer
+        app: producer-dag
     spec:
       containers:
-        - name: data-producer
-          image: fhuadeen/tweet_data_producer
+        - name: producer-dag
+          image: fhuadeen/producer-dag
           resources:
             requests:
               cpu: 100m
@@ -22,18 +22,18 @@ spec:
               cpu: 100m
               memory: 128Mi
           ports:
-            - containerPort: 4500
+            - containerPort: 5000
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: data-producer-srv
+  name: producer-dag-srv
 spec:
   selector:
-    app: data-producer
+    app: producer-dag
   ports:
-    - name: data-producer
+    - name: producer-dag
       protocol: TCP
-      port: 4500
-      targetPort: 4500
+      port: 5000
+      targetPort: 5000
